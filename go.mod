@@ -1,4 +1,4 @@
-module github.com/CaiJimmy/hugo-theme-stack/demo
+module github.com/proochicken/proochicken.github.io
 
 go 1.25.6
 
