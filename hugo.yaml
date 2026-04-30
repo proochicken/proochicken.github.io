@@ -1,0 +1,89 @@
+baseurl: https://proochicken.github.io/
+languageCode: en-us
+theme: hugo-theme-stack
+title: "Buitu blog"
+paginate: 10
+
+# Cấu trúc URL
+permalinks:
+  post: /p/:slug/
+  page: /:slug/
+
+params:
+  mainSections:
+    - post
+  featuredImageField: image
+  rssFullContent: true
+
+  # Thông tin trang chủ
+  sidebar:
+    emoji: "🔐"
+    subtitle: "My CTF write-ups & security research and things I learned" 
+    avatar:
+      enabled: true
+      local: true
+      src: img/avatar.png  # Đặt ảnh tại static/img/avatar.png
+
+  # Footer
+  footer:
+    since: 2025
+    customText: ""
+
+  # Màu sắc
+  colorScheme:
+    toggle: true        # Hiện nút dark/light mode
+    default: auto       # auto | dark | light
+
+  # Tính năng bài viết
+  article:
+    math: false         # Tắt nếu không dùng LaTeX
+    toc: true           # Table of contents — rất hữu ích cho write-up dài
+    readingTime: true
+    license:
+      enabled: false
+
+  # Widget sidebar phải
+  widgets:
+    homepage:
+      - type: search
+      - type: archives
+        params:
+          limit: 5
+      - type: categories
+        params:
+          limit: 10
+      - type: tag-cloud
+        params:
+          limit: 10
+    page:
+      - type: toc
+
+  # Tắt comment (hoặc bật Disqus/Utterances nếu muốn)
+  comments:
+    enabled: false
+
+  # Social links
+  socialIcons:
+    - identifier: github
+      name: GitHub
+      url: https://github.com/proochicken
+
+# Menu navigation
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 2
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 3
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 4
