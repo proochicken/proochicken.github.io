@@ -2,13 +2,8 @@
 title: About
 description: About buitu
 slug: about
-date: 2026-06-01
+date: 2026-05-01
 layout: about
-menu:
-    main:
-        weight: 6
-        params:
-            icon: user
 ---
 
 ## Hey, I'm buitu 👋
