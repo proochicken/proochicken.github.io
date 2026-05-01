@@ -1,6 +1,6 @@
 baseURL                = "https://proochicken.github.io/"
 locale           = "en-us"
-title                  = "Hugo Theme Stack"
+title                  = "buitu blog"
 # Theme i18n support
 # See i18n folder for available languages
 defaultContentLanguage = "en"

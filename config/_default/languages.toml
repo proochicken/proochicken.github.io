@@ -1,10 +1,10 @@
 [en]
     lable = "English"
-    title        = "Hugo Theme Stack"
+    title        = "buitu blog"
     weight       = 1
 
     [en.params.sidebar]
-        subtitle = "Card-style Hugo theme designed for bloggers"
+        subtitle = "Hi there, here is buitu's blog"
 
 [zh]
     label = "简体中文"
