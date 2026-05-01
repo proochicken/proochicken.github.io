@@ -19,10 +19,7 @@ params:
   sidebar:
     emoji: "🔐"
     subtitle: "My CTF write-ups & security research and things I learned" 
-    avatar:
-      enabled: true
-      local: true
-      src: img/avatar.png  # Đặt ảnh tại static/img/avatar.png
+    avatar: "img/avatar.png"
 
   # Footer
   footer:
