@@ -66,29 +66,36 @@ params:
       url: https://github.com/proochicken
 
 # Menu navigation
+# Menu navigation
 menu:
   main:
     - identifier: home
       name: Home
       url: /
       weight: 1
+      params:
+        icon: home
     - identifier: archives
       name: Archives
       url: /archives/
       weight: 2
+      params:
+        icon: archives
     - identifier: search
       name: Search
       url: /search/
       weight: 3
+      params:
+        icon: search
     - identifier: tags
       name: Tags
       url: /tags/
       weight: 4
-    - identifier: links
-      name: Links
-      url: /links/
-      weight: 5
+      params:
+        icon: tag
     - identifier: about
       name: About
       url: /about/
-      weight: 6
+      weight: 5
+      params:
+        icon: user
