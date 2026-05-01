@@ -9,7 +9,7 @@ defaultContentLanguage = "en"
 hasCJKLanguage         = false
 
 [pagination]
-    pagerSize = 3
+    pagerSize = 10
 
 [permalinks]
     post = "/p/:slug/"
