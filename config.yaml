@@ -27,7 +27,7 @@ params:
   # Footer
   footer:
     since: 2025
-    customText: ""
+    customText: "buitu · CTF & Security"
 
   # Màu sắc
   colorScheme:
@@ -87,3 +87,11 @@ menu:
       name: Tags
       url: /tags/
       weight: 4
+    - identifier: links
+      name: Links
+      url: /links/
+      weight: 5
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 6
