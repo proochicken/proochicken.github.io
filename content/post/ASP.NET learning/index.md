@@ -7,7 +7,7 @@ tags: ["ASP.NET Core", "C#", "Nhật ký học tập"]
 series: ["Hành trình học ASP.NET"]
 ---
 
->Chào mọi người, vì mong muốn hiểu sâu hệ thống để bảo mật tốt hơn, nên mình học cách tìm hiểu người ta xây dựng nó bài bản như thế nào. Và đây là nhật ký `Part 1` của mình trong hành trình *tập làm thợ xây* với ASP.NET Core MVC. 
+> Chào mọi người, vì mong muốn hiểu sâu hệ thống để bảo mật tốt hơn, nên mình học cách tìm hiểu người ta xây dựng nó bài bản như thế nào. Và đây là nhật ký `Part 1` của mình trong hành trình *tập làm thợ xây* với ASP.NET Core MVC.
 
 # I. Các khái niệm
 Đầu tiên ta sẽ cùng tìm hiểu về một số khái niệm cơ bản trong ASP.NET 
@@ -15,14 +15,18 @@ series: ["Hành trình học ASP.NET"]
 ## 1. Interface là gì? 
 - Interface là một contract mô tả các phương thức mà một class phải triển khai
 - Ví dụ:
+
 ```C#
 public interface IRepository
 {
 	string GetById(string id);
 }
 ```
+
 - Interface chỉ nói: 
->Muốn là IRepository thì phải có GetById()
+
+> Muốn là IRepository thì phải có GetById()
+
 - Nó không quan tâm code bên trong
 - Class thực hiện:
 ```
@@ -37,41 +41,51 @@ public class MyRepository : IRepository
 ### Tại sao cần Interface??
 - Để code phụ thuộc vào "chức năng" thay vì "class cụ thể"
 - Ví dụ:
+
 ```
 HomeController
 	|
 	v
 IRepository
 ```
+
 - Thay vì:
+
 ```
 HomeController
 	|
 	v
 MyRepository
 ```
+
 - Sau này đổi `MyRepository` thành 1 tên khác thì Controller không phải sửa
 ---
 ## 2. Dependency Injection (DI) là gì?
 - DI là kỹ thuật cung cấp các dependency từ bên ngoài thay vì tự tạo bên trong class
 - Không dùng DI:
+
 ```C#
 public HomeController()
 {
 	repository = new MyRepository();
 }
 ```
+
 - Dùng DI:
+
 ```C#
 public HomeController(IRepository repository)
 {
 	this.repository = repository;
 }
 ```
+
 - Ở đây:
+
 ```
 HomeController cần IRepository
 ```
+
 nhưng không tự tạo mà ASP.NET sẽ đưa vào giúp
 - **Lợi ích**:
 	- Giảm phụ thuộc
@@ -80,22 +94,29 @@ nhưng không tự tạo mà ASP.NET sẽ đưa vào giúp
 ---
 ## 3. Service Container hoạt động thế nào? 
 - Service Container là nơi ASP.NET lưu các service đã đăng ký
-- Bạn đăng ký
+- Bạn đăng ký:
+
 ```C#
 builder.Services.AddTransient<IRepository>(services => new MyRepository());
 ```
+
 - Container sẽ ghi nhớ:
+
 ```
 IRepository
 	|
 	v
 MyRepository
 ```
+
 - Khi có class cần:
+
 ```C#
 IRepository repository
 ```
+
 - Container sẽ:
+
 ```
 Tạo MyRepository
 	|
@@ -106,6 +127,7 @@ Tạo MyRepository
 ## 4. Constructor Injection là gì? 
 - Là hình thức DI thông qua Constructor
 - Ví dụ:
+
 ```C#
 public HomeController(
 	IRepository repository,
@@ -115,7 +137,9 @@ public HomeController(
 	this.logger = logger;
 }
 ```
+
 - ASP.NET sẽ:
+
 ```
 Tạo IRepository
 Tạo ILogger
@@ -124,26 +148,34 @@ Tạo ILogger
 v
 Truyền vào constructor
 ```
+
 --> Gọi là `Constructor Injection` vì dependency được inject qua constructor
 
 ---
 ## 5. Service Lifetime là gì? 
 - Là thời gian sống của object trong DI Container
 ### a. Transient
+
 ```C#
 builder.Services.AddTransient<IRepository, MyRepository>();
 ```
+
 - Với **Transient** - Mỗi lần Add như vậy cần tạo 1 object mới
 - Ví dụ:
+
 ```
 Request 1 --> Repository A
 Request 2 --> Repository B
 ```
+
 ### b. Scoped 
+
 ```C#
 builder.Services.AddScoped<IRepository, MyRepository>();
 ```
+
 - Một request dùng chung một object
+
 ```
 Request 1
 |-Controller
@@ -152,18 +184,24 @@ Request 1
 
 ==> Cùng 1 object
 ```
+
 - Request tiếp theo:
 ==> Object mới
 - Đây là loại phổ biến nhất với Entity Framework
 ### c. Singleton 
+
 ```C#
 builder.Services.AddSingleton<IRepository, MyRepository>();
 ```
+
 - Toàn bộ ứng dụng:
+
 ```
 1 object duy nhất
 ```
+
 - Ví dụ:
+
 ```
 Server Start
 	|
@@ -177,6 +215,7 @@ Tất cả request dùng chung cho tới khi server tắt
 
 ## 6. Cấu trúc của 1 project ban đầu 
 - Trong project MVC, ta để ý có các folder chính:
+
 ```
 Controller/
 Views/
@@ -185,7 +224,9 @@ wwwroot/
 Program.cs
 appsettings.json
 ```
+
 - Hiểu đơn giản thì:
+
 ```
 Controllers  -> nơi nhận request và điều hướng xử lý
 Views        -> giao diện HTML/Razor
