@@ -1,6 +1,6 @@
 ---
 title: "eJPT Review"
-date: 2026-09-24
+date: 2026-09-20
 draft: false
 categories: ["Certification Reviews"]
 tags: ["eJPT", "Pentesting", "Certification", "INE"]
